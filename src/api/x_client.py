@@ -6,7 +6,13 @@ load_dotenv()
 
 class XClient:
     """
-    Client for interacting with the X (Twitter) API v2.
+    X (Twitter) API Client optimized for Free Tier.
+    Free Tier 2026:
+    - Post 500 tweets/month (approx 16/day).
+    - Media uploads allowed.
+    - NO profile updates via API.
+    - NO follow/unfollow via API.
+    - NO search/read via API.
     """
     def __init__(self):
         self.client = tweepy.Client(
@@ -27,9 +33,6 @@ class XClient:
             return None
 
     def post_thread(self, tweets):
-        """
-        Posts a series of tweets as a thread.
-        """
         previous_tweet_id = None
         for i, text in enumerate(tweets):
             try:
@@ -45,9 +48,3 @@ class XClient:
             except Exception as e:
                 print(f"Error posting thread element {i+1}: {e}")
                 break
-
-if __name__ == "__main__":
-    # Test
-    # x = XClient()
-    # x.post_tweet("CyberPulse AI ⚡️ Initializing... Stay tuned for the future of AI news. #CyberPulse #AI")
-    pass
